@@ -1,10 +1,9 @@
 tasks:
     - name: demo
       init: |
-        docker-compose pull
-      command:
-        cd watermill
-        docker-compose up
+          docker-compose pull
+      command: |
+          cd watermill & docker-compose up
 
     - name: events
       init: |
