@@ -3,7 +3,7 @@ tasks:
       init: |
           docker-compose pull
       command: |
-          cd watermill & docker-compose up
+          cd watermill && docker-compose up
 
     - name: events
       init: |
