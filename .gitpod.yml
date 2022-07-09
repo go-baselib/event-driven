@@ -1,7 +1,10 @@
 tasks:
     - name: demo
-      init: docker-compose pull
-      command: docker-compose up
+      init: |
+        docker-compose pull
+      command:
+        cd watermill
+        docker-compose up
 
     - name: events
       init: |
@@ -14,7 +17,7 @@ tasks:
           docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic events-processed
 
 ports:
-    - port: 2181 # postgres
+    - port: 2181 # zookeeper
       onOpen: ignore
-    - port: 9092 # temporal server
+    - port: 9092 # kafka
       onOpen: ignore
