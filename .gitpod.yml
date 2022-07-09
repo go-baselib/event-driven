@@ -1,0 +1,20 @@
+tasks:
+    - name: demo
+      init: docker-compose pull
+      command: docker-compose up
+
+    - name: events
+      init: |
+      command: |
+          docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic events
+
+    - name: events-processed
+      init: |
+      command: |
+          docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic events-processed
+
+ports:
+    - port: 2181 # postgres
+      onOpen: ignore
+    - port: 9092 # temporal server
+      onOpen: ignore
