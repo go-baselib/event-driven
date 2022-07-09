@@ -8,13 +8,12 @@ tasks:
     - name: events
       init: |
       command: |
-          sleep 120 && docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic events
+          sleep 120 && cd watermill && docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic events
 
     - name: events-processed
       init: |
       command: |
-          sleep 120 && docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic
-          events-processed
+          sleep 120 && cd watermill && docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic events-processed
 
 ports:
     - port: 2181 # zookeeper
