@@ -1,15 +1,13 @@
 version: '3'
 services:
   server:
-    image: golang:1.17
+    image: demo
     restart: unless-stopped
     depends_on:
     - kafka
-    volumes:
-    - .:/app
-    - $GOPATH/pkg/mod:/go/pkg/mod
-    working_dir: /app
-    command: go mod download && go run demo.go
+    build:
+      context: ./
+      dockerfile: Dockerfile
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest

@@ -13,7 +13,7 @@ tasks:
     - name: events-processed
       init: |
       command: |
-          sleep 120 docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic
+          sleep 120 && docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic
           events-processed
 
 ports:
